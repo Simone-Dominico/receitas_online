@@ -1,11 +1,44 @@
-<div class="center hero-unit">
-	<h1>Welcome to the Sample App</h1>
-	<h2>
-		This is the home page for the
-		<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-		sample application.
-	</h2>
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+<div id="myCarousel" class="carousel slide">
+	<div class="carousel-inner">
+		<div class="item active">
+			<div class="container">
+				<%= image_tag("bolo.jpg" , alt: "bolo")%>
+				<div class="carousel-caption">
+					<div class="center">
+						<h1>É muito fácil</h1>
+						<p class="lead">É muito fácil adicionar aquelas receitas de sua vó na internet, as receitas feitas nos finais de semana com sua família e compartilhar elas com todos pelo Receitas Online.</p>              	
+						<p class="lead">Você pode conhecer novas receitas e criar sua conta Agora é muito fácil.</p>
+
+						<p><%= link_to "Crie sua Conta Agora!", signup_path, class: "btn btn-large btn-primary" %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<%= image_tag("livro.jpg" , alt: "Receitas Online")%>
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Another example headline.</h1>
+					<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					<a class="btn btn-large btn-primary" href="#">Learn more</a>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<%= image_tag("livro.jpg" , alt: "Receitas Online")%>
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>One more for good measure.</h1>
+					<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					<a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->
+
 </div>
 
 

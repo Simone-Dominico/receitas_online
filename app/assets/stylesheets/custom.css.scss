@@ -2,6 +2,7 @@
 
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
+$white : #F0FFFF;
 @mixin box_sizing {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
@@ -12,9 +13,6 @@ $grayMediumLight: #eaeaea;
 /* universal */
 html {
         overflow-y: scroll;
-}
-body {
-        padding-top: 200px;
 }
 section {
         overflow: auto;
@@ -38,6 +36,7 @@ h1 {
         letter-spacing: -2px;
         margin-bottom: 30px;
         text-align: center;
+        color: $white;
 }
 
 h2 {
@@ -70,8 +69,6 @@ p {
                 text-decoration: none;
         }
 }
-
-
 /* footer */
 footer {
         margin-top: 45px;

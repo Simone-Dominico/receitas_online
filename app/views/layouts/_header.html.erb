@@ -1,14 +1,26 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-	<div class="navbar-inner">
-		<div class="container">
-			<nav>
-				<%= link_to image_tag("logo.png" , alt: "Receitas Online"), root_path %>
+<header class="navbar-wrapper">
+	<div class="container">
 
-				<ul class="nav pull-right">
-					<li><%= link_to "Home",root_path %></li>
-					<li><%= link_to "Sign in", signup_path %></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+    <div class="navbar navbar-inverse">
+      <%= image_tag("logo2.png" , alt: "Receitas Online")%>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path%></li>
+          <li><%= link_to "Help", '#'%></li>
+        </ul>
+      </nav>
+      <div class="navbar-inner">
+
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><%= link_to "Almoço/Jantar", '#'%></li>
+            <li><%= link_to "Sobremesas", '#'%></li>
+            <li><%= link_to "Lanches", '#'%></li>
+            <li><%= link_to "Bebidas", '#'%></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+
+  </div> <!-- /.container -->
 </header>
