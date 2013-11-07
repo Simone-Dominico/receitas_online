@@ -2,7 +2,7 @@
 
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
-$white : #F0FFFF;
+$yellow: #B8860B;
 @mixin box_sizing {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -36,7 +36,7 @@ h1 {
     letter-spacing: -2px;
     margin-bottom: 30px;
     text-align: center;
-    color: $white;
+    color: $yellow;
 }
 
 h2 {

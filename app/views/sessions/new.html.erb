@@ -1,6 +1,7 @@
 <% provide(:title, "Sign in") %>
 <h1>Sign in</h1>
 <div class="row">
+<%= image_tag("cheff.jpg" , alt: "Receitas Online")%>
 	<div class="span6 offset3">
 		<%= form_for(:session, url: sessions_path) do |f| %>
 		<%= f.label :email %>
@@ -9,7 +10,7 @@
 		<%= f.password_field :password %>
 		<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
 		<% end %>
-		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+		<p>Você é novo aqui? <%= link_to "Cadastre-se Agora!", signup_path %></p>
 	</div>
 </div>
 
