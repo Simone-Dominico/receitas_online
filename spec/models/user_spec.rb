@@ -14,6 +14,7 @@ describe User do
 	it { should respond_to(:remember_token) }
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:admin) }
+	it { should respond_to(:revenues) }
 	
 	it { should be_valid }
 	it { should_not be_admin }
@@ -93,7 +94,28 @@ describe User do
 		before { @user.save }
 		its(:remember_token) { should_not be_blank }
 	end
+	describe "revenue associations" do
 
+		before { @user.save }
+		let!(:older_revenue) do
+			FactoryGirl.create(:revenue, user: @user, created_at: 1.day.ago)
+		end
+		let!(:newer_revenue) do
+			FactoryGirl.create(:revenue, user: @user, created_at: 1.hour.ago)
+		end
+
+		it "should have the right revenues in the right order" do
+			expect(@user.revenues.to_a).to eq [newer_revenue, older_revenue]
+		end
+		it "should destroy associated microposts" do
+			revenues = @user.revenues.to_a
+			@user.destroy
+			expect(revenues).not_to be_empty
+			revenues.each do |revenue|
+				expect(Revenue.where(id: revenue.id)).to be_empty
+			end
+		end
+	end
 
 end
 

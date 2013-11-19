@@ -1,0 +1,14 @@
+<%= form_for(@revenue, :html => { :multipart => true }) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<div class="field">
+ <%= f.label :name, "Nome da Receita:" %>
+ <%= f.text_field :name %>
+ <%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name))%>
+ <%= f.label :ingredients, "Ingredientes:" %>
+ <%= f.text_area :ingredients, placeholder: "Digite os ingredientes" %>
+ <%= f.text_area :preparation, placeholder: "Digite o modo de preparo" %>
+ <%= f.label :image %>
+ <%= f.file_field :image %> 
+</div>
+<%= f.submit "Postar", class: "btn btn-large btn-primary" %>
+<% end %>

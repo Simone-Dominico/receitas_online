@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 	end
 	def show
 		@user = User.find(params[:id])
+		@revenues = @user.revenues.paginate(page: params[:page])
 	end
 	def new
 		@user = User.new
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
 	end
 	def destroy
 		User.find(params[:id]).destroy
-		flash[:success] = "User deleted."
+		flash[:success] = "Usuario deletado."
 		redirect_to users_url
 	end
 	private

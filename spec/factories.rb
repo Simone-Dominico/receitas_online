@@ -9,4 +9,8 @@ FactoryGirl.define do
       admin true
     end
   end
+  factory :revenue do
+    preparation "Lorem ipsum"
+    user
+  end
 end

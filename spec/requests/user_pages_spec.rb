@@ -48,9 +48,16 @@ describe "User pages" do
 	end
 	describe "profile page" do
 		let(:user) { FactoryGirl.create(:user) }
+		let!(:m1) { FactoryGirl.create(:revenue, user: user, preparation: "Foo") }
+		let!(:m2) { FactoryGirl.create(:revenue, user: user, preparation: "Bar") }
 		before { visit user_path(user) }
 		it { should have_content(user.name) }
 		it { should have_title(user.name) }
+		describe "revenue" do
+			it { should have_content(m1.preparation) }
+			it { should have_content(m2.preparation) }
+			it { should have_content(user.revenue.count) }
+		end
 	end
 	describe "signup page" do
 		before { visit signup_path }

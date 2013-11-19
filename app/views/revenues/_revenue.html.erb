@@ -1,0 +1,7 @@
+<li>
+  <span class="content"><%= revenue.name %></span>
+  <%= image_tag revenue.image.url(:thumb)%>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(revenue.created_at) %> ago.
+  </span>
+</li>
