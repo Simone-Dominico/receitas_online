@@ -14,6 +14,17 @@ class RevenuesController < ApplicationController
 
 	def destroy
 	end
+	def edit
+	end
+
+	def update
+		if @revenue.update_attributes(revenue_params)
+			flash[:success] = "Receita alterada com Sucesso"
+			redirect_to @user
+		else
+			render 'edit'
+		end
+	end
 
 	private
 

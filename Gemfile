@@ -26,7 +26,7 @@ group :test do
         gem 'capybara', '~>2.1.0'
         gem 'factory_girl_rails', '~>4.2.1'
         gem 'cucumber-rails', '1.4.0', :require => false
-        gem 'database_cleaner', github: 'bmabey/database_cleaner'
+        gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner'
 
 end
 
@@ -46,3 +46,9 @@ group :production do
         gem 'pg', '~>0.15.1'
         gem 'rails_12factor', '~>0.0.2'
 end
+gem 'unicorn'
+
+gem 'capistrano', '~> 3.0', group: :development
+gem 'capistrano-rails', group: :development
+gem 'capistrano-bundler', group: :development
+gem 'capistrano-rvm', '~> 0.0.3', group: :development
