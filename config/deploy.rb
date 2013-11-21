@@ -1,40 +1,45 @@
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :rails_env, 'production'
 
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :rvm_type, :user
+set :rvm_ruby_version, '2.0.0'
 
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
+set :application, "receitas_online"
+set :user, 'deployer'
+set :deploy_via, :remote_cache
 
-# set :format, :pretty
-# set :log_level, :debug
-# set :pty, true
+set :scm, "git"
+set :repo_url, "https://github.com/Simone-Dominico/receitas_online.git"
+set :branch, "master"
 
-# set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
+set :normalize_asset_timestamps, false
+
+set :format, :pretty
+#set :log_level, :info
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
 namespace :deploy do
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command do
+      on roles(:app) do
+        execute "/etc/init.d/unicorn_#{fetch(:application)} #{command}"
+      end
     end
   end
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  task :setup_config do
+    on roles(:app) do
+      within current_path do
+        sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}.conf"
+        sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+      end
+      puts "Now edit the config files in #{shared_path}."
     end
   end
-
-  after :finishing, 'deploy:cleanup'
+  before "deploy:restart", "deploy:setup_config"
 
 end
