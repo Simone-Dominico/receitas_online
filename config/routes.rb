@@ -2,16 +2,22 @@ ReceitasOnline::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:create]
-  resources :revenues, only: [:create]
+  resources :revenues, only: [:create, :destroy, :edit]
+  resources :categories
   root 'static_pages#home'
-  match '/help', to: 'static_pages#help' , via: "get"
-  match '/about', to: 'static_pages#about', via: "get"
-  match '/contact', to: 'static_pages#contact', via: "get"
+  
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/signup', to: 'users#new', via: 'get'
+  match '/edit', to: 'users#edit', via: 'get'
 
-  match '/signup', to: 'users#new',   via: 'get'
+  match '/create', to: 'revenues#create', via: 'get'
+  match '/revenues', to: 'categories#show', via: 'get'
+  
+
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

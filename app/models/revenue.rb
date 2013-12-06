@@ -2,6 +2,7 @@ class Revenue < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
 	default_scope -> { order('created_at DESC') }
+	validates :name, presence: true
 	validates :preparation, presence: true, length: { maximum: 500 }
 	validates :ingredients, presence: true
 	validates :user_id, presence: true

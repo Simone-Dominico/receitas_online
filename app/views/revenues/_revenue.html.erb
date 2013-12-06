@@ -4,6 +4,11 @@
   <span class="timestamp">
     Postado <%= time_ago_in_words(revenue.created_at) %> ago.
   </span>
-  <span><%= link_to "Editar", edit_user_path(current_user) %></span>
-  <span><%= link_to "Deletar", edit_user_path(current_user) %></span>
+   <% if current_user?(revenue.user) %>
+  <span><%= link_to "Editar", edit_revenue_path%></span>
+  <span>  <%= link_to "delete", revenue, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: revenue.name %>
+  <% end %>
+ </span>
 </li>

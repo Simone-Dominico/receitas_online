@@ -7,10 +7,12 @@ class UsersController < ApplicationController
 	def index
 		@users = User.paginate(page: params[:page])
 	end
+
 	def show
 		@user = User.find(params[:id])
 		@revenues = @user.revenues.paginate(page: params[:page])
 	end
+	
 	def new
 		@user = User.new
 	end
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			sign_in @user
-			flash[:success] = "Welcome to the Sample App!"
+			flash[:success] = "Welcome to the Revenues Online!"
 			redirect_to @user
 		else
 			render 'new'

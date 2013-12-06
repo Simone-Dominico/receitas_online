@@ -1,0 +1,9 @@
+<div class="span8">
+<% if @revenues.any? %>
+<h3>Receitas (<%= @revenues.count %>)</h3>
+<% for revenue in @revenues %>  
+
+<% end %> 
+<%= will_paginate @revenues %>
+<% end %>
+</div>

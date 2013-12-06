@@ -9,8 +9,13 @@ FactoryGirl.define do
       admin true
     end
   end
+  factory :category do
+    name "Almoço"
+  end
   factory :revenue do
     preparation "Lorem ipsum"
+    ingredients "arroz"
+    category
     user
   end
 end

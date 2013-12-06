@@ -1,6 +1,10 @@
 class RevenuesController < ApplicationController
 
-	before_action :signed_in_user
+	before_action :signed_in_user, only: [:edit, :update, :destroy]
+	before_action :correct_user,   only: :destroy
+
+	def index
+	end
 
 	def create
 		@revenue = current_user.revenues.build(revenue_params)
@@ -11,10 +15,16 @@ class RevenuesController < ApplicationController
 			render 'static_pages/home'
 		end
 	end
+	def show
+		@revenues = Revenue.paginate(page: params[:page])
+	end
 
 	def destroy
+		@revenue.destroy
+		redirect_to root_url
 	end
 	def edit
+
 	end
 
 	def update
@@ -30,5 +40,9 @@ class RevenuesController < ApplicationController
 
 	def revenue_params
 		params.require(:revenue).permit(:preparation, :ingredients, :name, :category_id, :image)
+	end
+	def correct_user
+		@revenue = current_user.revenues.find_by(id: params[:id])
+		redirect_to root_url if @revenue.nil?
 	end
 end

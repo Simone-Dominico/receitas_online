@@ -13,20 +13,12 @@ describe "Revenue pages" do
     describe "with invalid information" do
 
       it "should not create a revenue" do
-        expect { click_button "Postar" }.not_to change(Micropost, :count)
+        expect { click_button "Post" }.not_to change(Revenue, :count)
       end
 
       describe "error messages" do
-        before { click_button "Postar" }
+        before { click_button "Post" }
         it { should have_content('error') }
-      end
-    end
-
-    describe "with valid information" do
-
-      before { fill_in 'revenue_content', with: "Lorem ipsum" }
-      it "should create a revenue" do
-        expect { click_button "Postar" }.to change(Revenue, :count).by(1)
       end
     end
   end

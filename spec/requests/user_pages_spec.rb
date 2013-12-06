@@ -48,16 +48,10 @@ describe "User pages" do
 	end
 	describe "profile page" do
 		let(:user) { FactoryGirl.create(:user) }
-		let!(:m1) { FactoryGirl.create(:revenue, user: user, preparation: "Foo") }
-		let!(:m2) { FactoryGirl.create(:revenue, user: user, preparation: "Bar") }
 		before { visit user_path(user) }
 		it { should have_content(user.name) }
 		it { should have_title(user.name) }
-		describe "revenue" do
-			it { should have_content(m1.preparation) }
-			it { should have_content(m2.preparation) }
-			it { should have_content(user.revenue.count) }
-		end
+
 	end
 	describe "signup page" do
 		before { visit signup_path }
@@ -66,7 +60,7 @@ describe "User pages" do
 	end
 	describe "signup" do
 		before { visit signup_path }
-		let(:submit) { "Crie sua Conta Agora!" }
+		let(:submit) { "Salvar" } 
 
 		describe "with invalid information" do
 			it "should not create a user" do
@@ -77,8 +71,8 @@ describe "User pages" do
 			before do
 				fill_in "Nome", 	with:  "Example User"
 				fill_in "Email", 	with:  "user@example.com"
-				fill_in "Senha",	with:  "foobar"
-				fill_in "Confirmação de senha", with: "foobar"
+				fill_in "Password",	with:  "foobar"
+				fill_in "Password confirmation", with: "foobar"
 			end
 			it "should create a user" do
 				expect { click_button submit }.to change(User, :count).by(1)
@@ -94,23 +88,27 @@ describe "User pages" do
 	end
 	describe "edit" do
 		let(:user) { FactoryGirl.create(:user) }
-		before { visit edit_user_path(user) }
+		before do 
+			sign_in user
+			visit edit_user_path(user)
+		end
 
 		describe "page" do
-			it { should have_content("Edite seu perfil") }
-			it { should have_title("Editar") }
-			#it { should have_link('change', href: 'http://gravatar.com/emails') }
+			it { should have_content("Update your profile") }
+			it { should have_title("Edit user") }
+			it { should have_link("change", href: 'http://gravatar.com/emails') }
 		end
 
 		describe "with valid information" do
 			let(:new_name)  { "New Name" }
 			let(:new_email) { "new@example.com" }
+
 			before do
-				fill_in "Nome",             with: new_name
-				fill_in "Email",            with: new_email
-				fill_in "Senha",         with: user.password
-				fill_in "Confirme sua senha", with: user.password
-				click_button "Salvar Alterações"
+				fill_in "Nome", 	with: new_name
+				fill_in "Email", 	with: new_email
+				fill_in "Password",	with:  user.password
+				fill_in "Password confirmation", with: user.password
+				click_button "Salvar"
 			end
 
 			it { should have_title(new_name) }
