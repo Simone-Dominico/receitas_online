@@ -33,8 +33,8 @@
           <ul class="nav">
             <li><%= link_to "Almoço/Jantar",revenues_path(:name=>'Almoco/Jantar')%></li> <!--categories_path ("Almoço/Jantar")-->
             <li><%= link_to "Sobremesas", revenues_path(:name=>'Sobremesa')%></li>
-            <li><%= link_to "Lanches", '#'%></li>
-            <li><%= link_to "Bebidas", '#'%></li>
+            <li><%= link_to "Lanches", revenues_path(:name=>'Lanches')%></li>
+            <li><%= link_to "Bebidas", revenues_path(:name=>'Bebidas')%></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!-- /.navbar-inner -->

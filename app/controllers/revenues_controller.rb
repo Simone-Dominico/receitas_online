@@ -4,10 +4,12 @@ class RevenuesController < ApplicationController
 	before_action :correct_user,   only: :destroy
 
 	def index
+		@revenue = Revenue.find(params[:id])
 	end
 
 	def create
 		@revenue = current_user.revenues.build(revenue_params)
+		#@ingredients = @revenue.ingredients.build(ingredients_params)
 		if @revenue.save
 			flash[:success] = "Receita Adicionada!"
 			redirect_to root_url

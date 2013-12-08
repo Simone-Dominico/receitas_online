@@ -1,0 +1,15 @@
+
+ <% provide(:title, @revenue.name) %>
+ <div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= image_tag(@revenue.image , alt: @revenue.name)%>
+      </h1>
+    </aside>
+    <div class="span8">
+    	<h3><%= @revenue.name %></h3>
+    	<h4>Ingredientes:</h4>
+    	<%= @revenue.ingredients %>
+  </div>  
+</div>

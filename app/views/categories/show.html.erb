@@ -1,9 +1,38 @@
-<div class="span8">
-<% if @revenues.any? %>
-<h3>Receitas (<%= @revenues.count %>)</h3>
-<% for revenue in @revenues %>  
+ <% provide(:title, @category.name) %>
+ <div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= image_tag("mostrar.jpg" , alt: "Sobremesas")%>
+      </h1>
+    </aside>
+    <div class="span8">
+     <h3>Receitas <%= @category.name%> (<%= @revenues.count %>)</h3>
+     <% if @revenues.any? %>
 
-<% end %> 
-<%= will_paginate @revenues %>
-<% end %>
+     <% for revenue in @revenues %>  
+     <div class="itens">
+      <div class="background"></div> 
+
+      <a><%= link_to image_tag(revenue.image.url(:thumb), alt: revenue.name), '' %></a> 
+      <div class="content">
+
+        <strong><%= link_to revenue.name, index_path(:id=>revenue.id) %></strong>
+
+      </div>
+
+      <div class="comments-link">
+        <p>0</a></p>
+      </div>
+    </div>
+    <% end %> 
+    <% elsif signed_in?
+       %>
+      <strong><%= link_to "Seja o primeiro a Cadastrar uma receita  de "+ @category.name, root_path %></strong>
+     <%else%>
+      <strong><%= link_to "Realize o login e Seja o primeiro a Cadastrar uma receita de "+ @category.name, signin_path %></strong>
+    <% end %> 
+    <p> <%= will_paginate @revenues %></p>
+  </div>  
 </div>
+

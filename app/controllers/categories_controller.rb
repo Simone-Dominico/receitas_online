@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
 	end
 	def show
 		@category = Category.find_by(name: params[:name])
-		@revenues = @category.revenues.paginate(page: params[:page])
+		@revenues = @category.revenues.paginate(page: params[:page], :per_page => 6)
 	end
 end

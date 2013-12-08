@@ -14,6 +14,7 @@ ReceitasOnline::Application.routes.draw do
 
   match '/create', to: 'revenues#create', via: 'get'
   match '/revenues', to: 'categories#show', via: 'get'
+  match '/index', to: 'revenues#index', via: 'get'
   
 
   match '/signin', to: 'sessions#new', via: 'get'

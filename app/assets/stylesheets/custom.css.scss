@@ -93,6 +93,14 @@ footer {
         }
     }
 }
+.itens {
+    width: 191px;
+    height: 200px;
+    overflow: hidden;
+    float: left;
+    margin: 0px 5px 0px 6px;
+    position: relative;
+}
 /* miscellaneous */
 .debug_dump {
     clear: both;
