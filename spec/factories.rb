@@ -9,11 +9,14 @@ FactoryGirl.define do
       admin true
     end
   end
+  factory :category do
+      name "Lanches"
+    end
   factory :revenue do
+    name "teste"
     preparation "Lorem ipsum"
     ingredients "arroz"
     category
     user
-    image { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
   end
 end

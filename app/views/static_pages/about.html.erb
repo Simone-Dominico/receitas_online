@@ -1,9 +1,17 @@
 <% provide(:title, 'About') %>
 <h1>About</h1>
 <p>
-	The <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-	is a project to make a book and screencasts to teach web development
-	with <a href="http://rubyonrails.org/">Ruby on Rails</a>. This
-	is the sample application for the tutorial.
+	Produzido na aula de Programação para Internet 4, Avaliação dos conhecimentos de Ruby on Rails.
+	 Descrição da Avaliação de Programação para Internet 4.
+	 <p>Aluno: Simone Dominico </p>
+	 	<p>Ideia: Livro de receitas online Atores: Administrador, Usuário. </p>
+	 	<p>O sistema consiste em um site onde as pessoas poderão se cadastrar para registrar suas receitas e disponibiliza-las para outros usuários do site. Através de cadastro os usuários poderão armazenar suas receitas online, e receber as atualizações realizadas no site.</p>
+	 <p> Funcionalidades: </p>
+	 <li> Cadastro de usuário no site, realizado pelo próprio usuário;</li>
+	 <li> Os usuários receberão por email as novas receitas cadastradas; </li>
+	 <li>Login para ter acesso ao cadastro de receitas;</li>
+	 <li>Receitas poderão conter fotos, upload;</li>
+	 <li> Área administrativa para acompanhar os participantes da pagina, ver a quantidade de receitas cadastradas;</li>
+	  <li>As receitas separadas por categorias: <%= link_to "Sobremesas", revenues_path(:name=>'Sobremesa')%>, <%= link_to "Lanches", revenues_path(:name=>'Lanches')%> , <%= link_to "Almoço/Jantar",revenues_path(:name=>'Almoco/Jantar')%></li>
 </p>
 

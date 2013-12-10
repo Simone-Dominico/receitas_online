@@ -1,10 +1,14 @@
+
 <%= form_for(@revenue, :html => { :multipart => true }) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
- <%= f.label :name, "Nome da Receita:" %>
+ <%= f.label :name %>
  <%= f.text_field :name %>
+ <%= f.label :timePreparation %>
+ <%= f.text_field :timePreparation %>
  <%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name))%>
  <%= f.label :ingredients %>
+ <div class="alert alert-warning">ATENÇÃO: Cada ingrediente deve estar em uma linha!</div>
  <%= f.text_area :ingredients, placeholder: "Digite os ingredientes" %>
  <%= f.text_area :preparation, placeholder: "Digite o modo de preparo" %>
  <%= f.label :image %>
@@ -12,3 +16,4 @@
 </div>
 <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
+

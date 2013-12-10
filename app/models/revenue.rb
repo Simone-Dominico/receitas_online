@@ -7,6 +7,5 @@ class Revenue < ActiveRecord::Base
 	validates :ingredients, presence: true
 	validates :user_id, presence: true
 	validates :category_id, presence: true
-	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "120x90#" },
-					  :default_url=> "/images/:styles/missing.png" 
+	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "120x90#" }, :default_url=> "/images/:styles/missing.png" 
 end

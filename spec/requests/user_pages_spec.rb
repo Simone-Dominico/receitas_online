@@ -71,8 +71,8 @@ describe "User pages" do
 			before do
 				fill_in "Nome", 	with:  "Example User"
 				fill_in "Email", 	with:  "user@example.com"
-				fill_in "Password",	with:  "foobar"
-				fill_in "Password confirmation", with: "foobar"
+				fill_in "Senha",	with:  "foobar"
+				fill_in "Confirmação de Senha", with: "foobar"
 			end
 			it "should create a user" do
 				expect { click_button submit }.to change(User, :count).by(1)
@@ -82,7 +82,7 @@ describe "User pages" do
 				let(:user) { User.find_by(email: 'user@example.com') }
 				it { should have_link('Sign out') }
 				it { should have_title(user.name) }
-				it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+				it { should have_selector('div.alert.alert-success', text: 'Bem vindo a Receitas Online!') }
 			end
 		end
 	end
@@ -94,7 +94,7 @@ describe "User pages" do
 		end
 
 		describe "page" do
-			it { should have_content("Update your profile") }
+			it { should have_content("Edite seu perfil") }
 			it { should have_title("Edit user") }
 			it { should have_link("change", href: 'http://gravatar.com/emails') }
 		end
@@ -106,8 +106,8 @@ describe "User pages" do
 			before do
 				fill_in "Nome", 	with: new_name
 				fill_in "Email", 	with: new_email
-				fill_in "Password",	with:  user.password
-				fill_in "Password confirmation", with: user.password
+				fill_in "Senha",	with:  user.password
+				fill_in "Confirmação de Senha", with: user.password
 				click_button "Salvar"
 			end
 

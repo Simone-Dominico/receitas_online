@@ -9,7 +9,6 @@ class RevenuesController < ApplicationController
 
 	def create
 		@revenue = current_user.revenues.build(revenue_params)
-		#@ingredients = @revenue.ingredients.build(ingredients_params)
 		if @revenue.save
 			flash[:success] = "Receita Adicionada!"
 			redirect_to root_url
@@ -26,22 +25,36 @@ class RevenuesController < ApplicationController
 		redirect_to root_url
 	end
 	def edit
-
+		@revenue = Revenue.find(params[:id])
 	end
 
 	def update
+		@revenue = Revenue.find(params[:id])
 		if @revenue.update_attributes(revenue_params)
 			flash[:success] = "Receita alterada com Sucesso"
-			redirect_to @user
+			redirect_to root_path
 		else
 			render 'edit'
 		end
 	end
+	def popularidade
+		@revenue = Revenue.find(params[:id])
+		if @revenue.popularidade.nil?
+			@revenue.popularidade = 1
+		else
+			@revenue.popularidade += 1
+		end
+		if @revenue.update_attributes(params[@revenue])
+			render 'index'
+		else
+			render 'edit'
+		end
+
+	end
 
 	private
-
 	def revenue_params
-		params.require(:revenue).permit(:preparation, :ingredients, :name, :category_id, :image)
+		params.require(:revenue).permit(:preparation, :ingredients, :name, :category_id, :image, :timePreparation)
 	end
 	def correct_user
 		@revenue = current_user.revenues.find_by(id: params[:id])

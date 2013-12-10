@@ -26,7 +26,6 @@ describe "Authentication" do
 		before { sign_in user }
 
 		it { should have_title(user.name) }
-		it { should have_link('Usuários',       href: users_path) }
 		it { should have_link('Perfil',     href: user_path(user)) }
 		it { should have_link('Editar',    href: edit_user_path(user)) }
 		it { should have_link('Sign out',    href: signout_path) }
@@ -90,13 +89,13 @@ describe "Authentication" do
 
 			describe "submitting to the create action" do
 				before { post revenues_path }
-				specify { expect(response).to redirect_to(signin_path) }
+				specify { expect(response).to redirect_to(root_path) }
 			end
 
-			#describe "submitting to the destroy action" do
-			#	before { delete revenue_path(FactoryGirl.create(:revenue)) }
-			#	specify { expect(response).to redirect_to(signin_path) }
-			#end
+			describe "submitting to the destroy action" do
+				before { delete revenue_path(FactoryGirl.create(:revenue)) }
+				specify { expect(response).to redirect_to(signin_path) }
+			end
 		end
 		describe "as wrong user" do
 			let(:user) { FactoryGirl.create(:user) }

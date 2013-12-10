@@ -1,0 +1,18 @@
+<% provide(:title, 'Receitas') %>
+<div class="row">
+	<aside class="span3">
+ 				<h1>Receitas (<%= @revenues.count %>)</h1>
+ 		</aside>
+ 		
+	<div class="span7">
+	
+
+		<%= will_paginate %>
+
+		<ul class="revenues">
+			<%= render @revenues %>
+		</ul>
+
+		<%= will_paginate %>
+	</div>
+</div>

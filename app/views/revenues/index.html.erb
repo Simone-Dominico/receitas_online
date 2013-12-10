@@ -1,15 +1,22 @@
 
- <% provide(:title, @revenue.name) %>
- <div class="row">
+<% provide(:title, @revenue.name) %>
+<div class="row">
   <aside class="span4">
     <section>
       <h1>
         <%= image_tag(@revenue.image , alt: @revenue.name)%>
       </h1>
     </aside>
-    <div class="span8">
-    	<h3><%= @revenue.name %></h3>
-    	<h4>Ingredientes:</h4>
-    	<%= @revenue.ingredients %>
-  </div>  
+  </section>
+  <div class="span8">
+   <h3><%= @revenue.name %></h3>
+   <h4>Tempo de Preparo:</h4>
+   <%= @revenue.timePreparation%> 
+   <h4>Ingredientes:</h4>
+   <%= simple_format(@revenue.ingredients)%> 
+   <h4>Modo de Preparo:</h4>
+   <%= @revenue.preparation%> 
+   <p><strong><%= @revenue.popularidade %> votos</p></strong>
+   <p><strong><%= link_to "Gostou desta Receita Vote!", popularidade_path(:id=>@revenue.id) %></strong></p>
+ </div>  
 </div>

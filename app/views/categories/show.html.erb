@@ -14,7 +14,7 @@
      <div class="itens">
       <div class="background"></div> 
 
-      <a><%= link_to image_tag(revenue.image.url(:thumb), alt: revenue.name), '' %></a> 
+      <a><%= link_to image_tag(revenue.image.url(:thumb), alt: revenue.name), index_path(:id=>revenue.id) %></a> 
       <div class="content">
 
         <strong><%= link_to revenue.name, index_path(:id=>revenue.id) %></strong>
@@ -22,7 +22,7 @@
       </div>
 
       <div class="comments-link">
-        <p>0</a></p>
+        <p><%= revenue.popularidade%> votos</p>
       </div>
     </div>
     <% end %> 

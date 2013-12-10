@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'paperclip', '~> 3.0'
 #gem 'rails-i18n', '~> 4.0.0'
+gem "rails_best_practices", "~> 1.14.4"
 
 
 group :development, :test do
@@ -28,6 +29,7 @@ group :test do
         gem 'factory_girl_rails', '~>4.2.1'
         gem 'cucumber-rails', '1.4.0', :require => false
         gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+        gem "simplecov", "~> 0.8.2"
 
 end
 
