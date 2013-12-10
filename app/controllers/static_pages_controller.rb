@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 	def home
   	  @revenue = current_user.revenues.build if signed_in?
-  	end
+  	end 
 
 	def help
 	end
@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
 	end
 
 	def contact
-	end
+    end 
+
 
 end

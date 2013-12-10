@@ -1,13 +1,6 @@
 <% provide(:title, 'Contact') %>
-<h3>Contato</h3>
-<div class="form">
-<%= form_for :contact, url: contact_path do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :email %>
-<%= f.text_field :email %>
-<%= f.label :conteudo %>
-<%= f.text_field :content, as: :text %>
-<%= f.submit "Post", class: "btn btn-large btn-primary" %>
-<% end %>
-</div>
+<h1>Contato</h1>
+<p>
+	Enviar email para:<a>simone.dominico@gmail.com</a>
+	
+</p>
