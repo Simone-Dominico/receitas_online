@@ -10,9 +10,9 @@ class RevenuesController < ApplicationController
 	def create
 		@revenue = current_user.revenues.build(revenue_params)
 		if @revenue.save
-			RevenuesMailer.newrevenue_email(@revenue).deliver
 			flash[:success] = "Receita Adicionada!"
 			redirect_to root_url
+			RevenuesMailer.revenues_email(@revenue).deliver
 		else
 			render 'static_pages/home'
 		end

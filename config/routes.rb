@@ -3,7 +3,7 @@ ReceitasOnline::Application.routes.draw do
   resources :users
   resources :sessions, only: [:create]
   resources :revenues, only: [:create, :destroy, :edit, :update]
-  resources :categories
+  
   root 'static_pages#home'
   
   match '/help', to: 'static_pages#help', via: 'get'
@@ -12,8 +12,9 @@ ReceitasOnline::Application.routes.draw do
   match '/signup', to: 'users#new', via: 'get'
   match '/edit', to: 'users#edit', via: 'get'
 
+  get '/categories/:name', to: 'categories#show', as: 'category'
+
   match '/create', to: 'revenues#create', via: 'get'
-  match '/revenues', to: 'categories#show', via: 'get'
   match '/index', to: 'revenues#index', via: 'get'
   match '/popularidade', to: 'revenues#popularidade', via: 'get'
   match '/lists', to: 'revenues#show', via: 'get'

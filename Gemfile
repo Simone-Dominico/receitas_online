@@ -11,6 +11,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'paperclip', '~> 3.0'
 #gem 'rails-i18n', '~> 4.0.0'
 gem "rails_best_practices", "~> 1.14.4"
+gem 'friendly_id'
 
 
 group :development, :test do
