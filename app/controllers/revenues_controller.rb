@@ -12,7 +12,7 @@ class RevenuesController < ApplicationController
 		if @revenue.save
 			flash[:success] = "Receita Adicionada!"
 			redirect_to root_url
-			RevenuesMailer.revenues_email(@revenue).deliver
+			#RevenuesMailer.revenues_email(@revenue).deliver
 		else
 			render 'static_pages/home'
 		end
